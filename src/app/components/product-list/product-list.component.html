@@ -5,23 +5,26 @@
         <hr>
         <div class="container-fluid">
             <div class="row">
-
-                <div class="col-md-3" *ngFor="let tempProduct of products">
-                    <div class="product-box">
-                        <a routerLink="/products/{{tempProduct.id}}">
-                            <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
-                        </a>
-                        <a routerLink="/products/{{tempProduct.id}}">
-                            <h1>{{ tempProduct.name }}</h1>
-                        </a>
-                        <!-- <h2> {{ tempProduct.description }} </h2> -->
-                        <div class="price">{{tempProduct.unitPrice | currency: "USD"}}</div>
-                        <button class="btn btn-primary btn-sm" (click)="addToCart(tempProduct)">Add to cart</button>
+                @for(tempProduct of products; track tempProduct.id) {
+                    <div class="col-md-3">
+                        <div class="product-box">
+                            <a routerLink="/products/{{tempProduct.id}}">
+                                <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
+                            </a>
+                            <a routerLink="/products/{{tempProduct.id}}">
+                                <h1>{{ tempProduct.name }}</h1>
+                            </a>
+                            <!-- <h2> {{ tempProduct.description }} </h2> -->
+                            <div class="price">{{tempProduct.unitPrice | currency: "USD"}}</div>
+                            <button class="btn btn-primary btn-sm" (click)="addToCart(tempProduct)">Add to cart</button>
+                        </div>
                     </div>
-                </div>
-                <div *ngIf="products?.length == 0" class="alert alert-warning">
-                    No products found!
-                </div>
+                }
+                @if(products.length == 0) {
+                    <div class="alert alert-warning">
+                        No products found!
+                    </div>
+                }
             </div>
             <div class="container">
                 <div class="row">

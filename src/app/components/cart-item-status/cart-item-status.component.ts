@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CartItemService } from '../../services/cart-item.service';
 import { CartItem } from '../../common/cart-item';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-item-status',
   templateUrl: './cart-item-status.component.html',
   styleUrls: ['./cart-item-status.component.css'],
-  imports: [CommonModule]
+  imports: [RouterLink, CommonModule]
 })
 export class CartItemStatusComponent implements OnInit {
   totalPrice: number = 0.00;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartItemService } from '../../services/cart-item.service';
 import { Product } from '../../common/product';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  imports: [CommonModule]
+  imports: [RouterLink, CommonModule]
 })
 export class ProductDetailComponent implements OnInit {
 

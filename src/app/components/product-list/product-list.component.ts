@@ -4,7 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { CartItemService } from '../../services/cart-item.service';
 import { Product } from '../../common/product';
 import { CartItem } from '../../common/cart-item';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

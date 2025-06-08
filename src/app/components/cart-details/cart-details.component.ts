@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CartItemService } from '../../services/cart-item.service';
 import { CartItem } from '../../common/cart-item';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
   templateUrl: './cart-details.component.html',
   styleUrls: ['./cart-details.component.css'],
-  imports: [CommonModule]
+  imports: [RouterLink, CommonModule]
 })
 export class CartDetailsComponent implements OnInit {
 

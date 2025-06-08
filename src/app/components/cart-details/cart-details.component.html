@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="cartItems.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="20%">Product Image</th>
+                        <th width="50%">Product Detail</th>
+                        <th width="30%"></th>
+                    </tr>
+                    <tr *ngFor="let item of cartItems">
+                        <td><img src={{item.imageUrl}} class="img-responsive" width="150px"></td>
+                        <td>
+                            <p>{{item.name}}</p>
+                            <p>{{item.description}}</p>
+                            <p>{{item.unitPrice | currency: "USD"}}</p>
+                        </td>
+                        <td>
+                            <div class="row">
+                                <label>Quantity</label>
+                                <div class="col">
+                                    <button (click)="reduceItemFromCart(item)" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                                <div class="col ml-4 mr-2">
+                                    <span>{{item.quantity}}</span>
+                                </div>
+                                <div class="col">
+                                    <button (click)="addToCart(item)" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="col-8"></div>
+                            </div>
+                            <button (click)="removeItemFromCart(item)" class="btn btn-primary btn-sm mt-2">Remove</button>
+                            <p>Sub-total {{item.unitPrice * item.quantity | currency: "USD"}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td><b>Total Quantity:{{totalQuantity}}</b>
+                            <p>Shipping FREE</p>
+                            <b>Total Price: {{totalPrice | currency: "USD"}}</b><br>
+                            <button routerLink="/checkout" class="btn btn-primary btn-sm">Checkout</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div *ngIf="cartItems.length == 0" class="alert alert-warning">No items in cart</div>
+
+        </div>
+    </div>
+</div>

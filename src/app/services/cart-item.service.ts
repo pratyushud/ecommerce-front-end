@@ -1,0 +1,62 @@
+import { Injectable } from '@angular/core';
+import { Product } from '../common/product';
+import { CartItem } from '../common/cart-item';
+import { findIndex, Subject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CartItemService {
+  cartItems: CartItem[] = [];
+  totalPrice: Subject<number> = new Subject<number>();
+  totalQuantity: Subject<number> = new Subject<number>();
+  constructor() { }
+
+  addProductToCart(cartItem: CartItem) {
+    let itemExists = false;
+    if(this.cartItems.length > 0) {
+      for(let item of this.cartItems) {
+        if(item.id == cartItem.id) {
+          item.quantity++;
+          itemExists = true;
+        }
+      }
+    }
+    if(!itemExists) {
+      this.cartItems.push(cartItem);
+    }
+    this.calculateAndUpdateTotals();
+  }
+
+  reduceProductFromCart(cartItem: CartItem) {
+    if(this.cartItems.length > 0) {
+      let item = this.cartItems.find(r => r.id == cartItem.id)!;
+      if(item.quantity > 1) {
+        item.quantity--;
+      } else {
+        let itemIndex = this.cartItems.findIndex(r => r.id == cartItem.id);
+        this.cartItems.splice(itemIndex, 1);
+      }
+      this.calculateAndUpdateTotals();
+    }
+  }
+
+  removeProductFromCart(cartItem: CartItem) {
+    if(this.cartItems.length > 0) {
+      let itemIndex = this.cartItems.findIndex(r => r.id == cartItem.id);
+      this.cartItems.splice(itemIndex, 1);
+      this.calculateAndUpdateTotals();
+    }
+  }
+
+  calculateAndUpdateTotals() {
+    let totalPriceValue = 0.00;
+    let totalQuantityValue = 0;
+    for(let item of this.cartItems) {
+      totalPriceValue += (item.unitPrice * item.quantity);
+      totalQuantityValue += item.quantity;
+    }
+    this.totalPrice.next(totalPriceValue);
+    this.totalQuantity.next(totalQuantityValue);
+  }
+}

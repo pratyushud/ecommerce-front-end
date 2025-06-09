@@ -5,18 +5,36 @@
                 <div formGroupName="customer" class="form-area">
                     <h3>Customer</h3>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
+                            <div class="label">
+                                <label>First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="firstName" type="text" placeholder="First Name">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Last Name</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="lastName" type="text" placeholder="Last Name">
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Email address</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="email" type="text" placeholder="Email Address">
                             </div>
@@ -27,41 +45,152 @@
                 <!--Form 2-->
                 <div formGroupName="shippingAddress" class="form-area">
                     <h3>Shipping Address</h3>
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row">   
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Country</span>
+                            </div>
+                        </div>                                             
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country" (change)="reloadStates('shippingAddress')">
+                                    @for(country of countries; track country.code) {
+                                        <option [value]="country.code">{{country.description}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>   
+                    </div>                     
+                    <div class="row">                                                
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Street</span>
+                            </div>
+                        </div>      
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="street" type="text" placeholder="Street">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                    </div>
+                    <div class="row">                                                
+                        <div class="col-md-3">     
+                            <div class="label">
+                                <span>City</span>
+                            </div>  
+                        </div>
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="city" type="text" placeholder="City">
                             </div>
                         </div>
-
-                        <div class="col-md-12">
+                    </div>
+                    <div class="row">                                             
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>State</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <select formControlName="state">
-                                    <option>State / Province</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
+                                    @for(state of shippingStates; track state.id) {
+                                        <option [value]="state.id">{{state.description}}</option>
+                                    }
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                    </div>
+                    <div class="row">                                               
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Zip/Postal Code</span>
+                            </div>
+                        </div>       
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="pin" type="text" placeholder="Zip Code / Postal Code">
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </div>
                 <div class="input-space">
                     <label class="au-checkbox">
-                        <input type="checkbox" checked="checked">
+                        <input type="checkbox" (change)="onShippingAddressSameAsBillingChange($event)">
                         <span class="au-checkmark"></span> Bill Address same as Shipping Adress
                     </label>
+                </div>
+
+                <div formGroupName="billingAddress" class="form-area">
+                    <h3>Billing Address</h3>
+                    <div class="row">   
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Country</span>
+                            </div>
+                        </div>                                             
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="country" (change)="reloadStates('billingAddress')">
+                                    @for(country of countries; track country.code) {
+                                        <option [value]="country.code">{{country.description}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>   
+                    </div>                     
+                    <div class="row">                                                
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Street</span>
+                            </div>
+                        </div>      
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="street" type="text" placeholder="Street">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                                                
+                        <div class="col-md-3">     
+                            <div class="label">
+                                <span>City</span>
+                            </div>  
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="city" type="text" placeholder="City">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                                             
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>State</span>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="state">
+                                    @for(state of billingStates; track state.id) {
+                                        <option [value]="state.id">{{state.description}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">                                               
+                        <div class="col-md-3">
+                            <div class="label">
+                                <span>Zip/Postal Code</span>
+                            </div>
+                        </div>       
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="pin" type="text" placeholder="Zip Code / Postal Code">
+                            </div>
+                        </div>
+                    </div>  
                 </div>
 
                 <div formGroupName="cardDetails" class="form-area">
@@ -100,22 +229,18 @@
                         <div class="col-md-5">
                             <div class="input-space">
                                 <select formControlName="expiryMonth">
-                                    <option>Month</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
+                                    @for(month of creditCardMonths; track month.code) {
+                                        <option [value]="month.code">{{month.description}}</option>
+                                    }
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="input-space">
-                                <select formControlName="expiryYear">
-                                    <option>Year</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
+                                <select (change)="reloadMonths()" formControlName="expiryYear">
+                                    @for(year of creditCardYears; track year.code) {
+                                        <option [value]="year.code">{{year.description}}</option>
+                                    }
                                 </select>
                             </div>
                         </div>

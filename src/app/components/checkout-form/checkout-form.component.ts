@@ -6,6 +6,7 @@ import { UtilityService } from '../../services/utility.service';
 import { RefCode } from '../../common/ref-code';
 import { Country } from '../../common/country';
 import { State } from '../../common/state';
+import { CustomValidators } from '../../common/custom-validators';
 
 @Component({
   selector: 'app-checkout-form',
@@ -32,27 +33,27 @@ export class CheckoutFormComponent implements OnInit {
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        firstName: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
         email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')])
       }),
       shippingAddress: this.formBuilder.group({
-        street: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        city: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        street: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
+        city: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
         state: new FormControl('', [Validators.required]),
         country: new FormControl('', [Validators.required]),
         pin: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{2,6}$')])
       }),
       billingAddress: this.formBuilder.group({
-        street: new FormControl('', [Validators.required, Validators.minLength(2)]),
-        city: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        street: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
+        city: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
         state: new FormControl('', [Validators.required]),
         country: new FormControl('', [Validators.required]),
         pin: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{2,6}$')])
       }),
       cardDetails: this.formBuilder.group({
         cardType: new FormControl('', [Validators.required]),
-        name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        name: new FormControl('', [Validators.required, Validators.minLength(2), CustomValidators.noWhitespace]),
         cardNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{16}$')]),
         cvv: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{3}$')]),
         expiryMonth: new FormControl('', [Validators.required]),
@@ -120,8 +121,68 @@ export class CheckoutFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(`on submit called`);
-    console.log(this.checkoutFormGroup.get('customer')!.value.email);
+    if (this.checkoutFormGroup.invalid) {
+      this.checkoutFormGroup.markAllAsTouched();
+      return;
+    }
+  }
+
+  get firstName() {
+    return this.checkoutFormGroup.get('customer.firstName') as FormControl;
+  }
+  get lastName() {
+    return this.checkoutFormGroup.get('customer.lastName') as FormControl;
+  }
+  get email() {
+    return this.checkoutFormGroup.get('customer.email') as FormControl;
+  }
+  get shippingStreet() {
+    return this.checkoutFormGroup.get('shippingAddress.street') as FormControl;
+  }
+  get shippingCity() {
+    return this.checkoutFormGroup.get('shippingAddress.city') as FormControl;
+  }
+  get shippingState() {
+    return this.checkoutFormGroup.get('shippingAddress.state') as FormControl;
+  }
+  get shippingCountry() {
+    return this.checkoutFormGroup.get('shippingAddress.country') as FormControl;
+  }
+  get shippingPin() {
+    return this.checkoutFormGroup.get('shippingAddress.pin') as FormControl;
+  }
+  get billingStreet() {
+    return this.checkoutFormGroup.get('billingAddress.street') as FormControl;
+  }
+  get billingCity() {
+    return this.checkoutFormGroup.get('billingAddress.city') as FormControl;
+  }
+  get billingState() {
+    return this.checkoutFormGroup.get('billingAddress.state') as FormControl;
+  }
+  get billingCountry() {
+    return this.checkoutFormGroup.get('billingAddress.country') as FormControl;
+  }
+  get billingPin() {
+    return this.checkoutFormGroup.get('billingAddress.pin') as FormControl;
+  }
+  get cardType() {  
+    return this.checkoutFormGroup.get('cardDetails.cardType') as FormControl;
+  }
+  get cardName() {
+    return this.checkoutFormGroup.get('cardDetails.name') as FormControl;
+  }
+  get cardNumber() {
+    return this.checkoutFormGroup.get('cardDetails.cardNumber') as FormControl;
+  }
+  get cvv() {
+    return this.checkoutFormGroup.get('cardDetails.cvv') as FormControl;
+  }
+  get expiryMonth() {
+    return this.checkoutFormGroup.get('cardDetails.expiryMonth') as FormControl;
+  }
+  get expiryYear() {
+    return this.checkoutFormGroup.get('cardDetails.expiryYear') as FormControl;
   }
 
 }

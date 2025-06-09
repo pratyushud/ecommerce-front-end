@@ -16,10 +16,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(firstName.invalid && (firstName.dirty || firstName.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(firstName.hasError('required') || firstName.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        First Name is required.
+                                    </div>
+                                }
+                                @if(firstName.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        First Name must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Last Name</span>
+                                <label>Last Name</label>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -28,10 +44,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(lastName.invalid && (lastName.dirty || lastName.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(lastName.hasError('required') || lastName.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        Last Name is required.
+                                    </div>
+                                }
+                                @if(lastName.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        Last Name must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Email address</span>
+                                <label>Email address</label>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -40,6 +72,22 @@
                             </div>
                         </div>
                     </div>
+                    @if(email.invalid && (email.dirty || email.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(email.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Email is required.
+                                    </div>
+                                }
+                                @if(email.hasError('pattern')) {
+                                    <div class="alert alert-danger">
+                                        Enter a valid email.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
 
                 <!--Form 2-->
@@ -48,7 +96,7 @@
                     <div class="row">   
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Country</span>
+                                <label>Country</label>
                             </div>
                         </div>                                             
                         <div class="col-md-9">
@@ -60,11 +108,22 @@
                                 </select>
                             </div>
                         </div>   
-                    </div>                     
+                    </div>
+                    @if(shippingCountry.invalid && (shippingCountry.dirty || shippingCountry.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(shippingCountry.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Country is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }                     
                     <div class="row">                                                
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Street</span>
+                                <label>Street</label>
                             </div>
                         </div>      
                         <div class="col-md-9">
@@ -73,10 +132,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(shippingStreet.invalid && (shippingStreet.dirty || shippingStreet.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(shippingStreet.hasError('required') || shippingStreet.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        Street is required.
+                                    </div>
+                                }
+                                @if(shippingStreet.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        Street must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                                
                         <div class="col-md-3">     
                             <div class="label">
-                                <span>City</span>
+                                <label>City</label>
                             </div>  
                         </div>
                         <div class="col-md-9">
@@ -85,10 +160,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(shippingCity.invalid && (shippingCity.dirty || shippingCity.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(shippingCity.hasError('required') || shippingCity.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        City is required.
+                                    </div>
+                                }
+                                @if(shippingCity.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        City must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                             
                         <div class="col-md-3">
                             <div class="label">
-                                <span>State</span>
+                                <label>State</label>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -101,10 +192,21 @@
                             </div>
                         </div>
                     </div>
+                    @if(shippingState.invalid && (shippingState.dirty || shippingState.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(shippingState.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        State is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                               
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Zip/Postal Code</span>
+                                <label>Zip/Postal Code</label>
                             </div>
                         </div>       
                         <div class="col-md-9">
@@ -112,12 +214,28 @@
                                 <input formControlName="pin" type="text" placeholder="Zip Code / Postal Code">
                             </div>
                         </div>
-                    </div>  
+                    </div> 
+                    @if(shippingPin.invalid && (shippingPin.dirty || shippingPin.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(shippingPin.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Zip Code / Postal Code is required.
+                                    </div>
+                                }
+                                @if(shippingPin.hasError('pattern')) {
+                                    <div class="alert alert-danger">
+                                        Enter a valid Zip Code / Postal Code.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div class="input-space">
                     <label class="au-checkbox">
                         <input type="checkbox" (change)="onShippingAddressSameAsBillingChange($event)">
-                        <span class="au-checkmark"></span> Bill Address same as Shipping Adress
+                        <span class="au-checkmark"></span> Billing Address same as Shipping Adress
                     </label>
                 </div>
 
@@ -126,7 +244,7 @@
                     <div class="row">   
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Country</span>
+                                <label>Country</label>
                             </div>
                         </div>                                             
                         <div class="col-md-9">
@@ -138,11 +256,22 @@
                                 </select>
                             </div>
                         </div>   
-                    </div>                     
+                    </div> 
+                    @if(billingCountry.invalid && (billingCountry.dirty || billingCountry.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(billingCountry.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Country is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }                              
                     <div class="row">                                                
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Street</span>
+                                <label>Street</label>
                             </div>
                         </div>      
                         <div class="col-md-9">
@@ -151,10 +280,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(billingStreet.invalid && (billingStreet.dirty || billingStreet.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(billingStreet.hasError('required') || billingStreet.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        Street is required.
+                                    </div>
+                                }
+                                @if(billingStreet.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        Street must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                                
                         <div class="col-md-3">     
                             <div class="label">
-                                <span>City</span>
+                                <label>City</label>
                             </div>  
                         </div>
                         <div class="col-md-9">
@@ -163,10 +308,26 @@
                             </div>
                         </div>
                     </div>
+                    @if(billingCity.invalid && (billingCity.dirty || billingCity.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(billingCity.hasError('required') || billingCity.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        City is required.
+                                    </div>
+                                }
+                                @if(billingCity.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        City must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                             
                         <div class="col-md-3">
                             <div class="label">
-                                <span>State</span>
+                                <label>State</label>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -179,10 +340,21 @@
                             </div>
                         </div>
                     </div>
+                    @if(billingState.invalid && (billingState.dirty || billingState.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(billingState.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        State is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                     <div class="row">                                               
                         <div class="col-md-3">
                             <div class="label">
-                                <span>Zip/Postal Code</span>
+                                <label>Zip/Postal Code</label>
                             </div>
                         </div>       
                         <div class="col-md-9">
@@ -190,43 +362,143 @@
                                 <input formControlName="pin" type="text" placeholder="Zip Code / Postal Code">
                             </div>
                         </div>
-                    </div>  
+                    </div> 
+                    @if(billingPin.invalid && (billingPin.dirty || billingPin.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(billingPin.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Zip Code / Postal Code is required.
+                                    </div>
+                                }
+                                @if(billingPin.hasError('pattern')) {
+                                    <div class="alert alert-danger">
+                                        Enter a valid Zip Code / Postal Code.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
 
                 <div formGroupName="cardDetails" class="form-area">
                     <h3>Credit Card</h3>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="input-space">
-                                <select formControlName="cardType">
-                                    <option>Visa</option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
-                                    <option></option>
-                                </select>
+                        <div class="col-md-3">
+                            <div class="label">
+                                <label>Card number</label>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="input-space">
-                                <input formControlName="name" type="text" placeholder="Name on card">
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-8">
+                        </div>     
+                        <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="cardNumber" type="text" placeholder="Card number">
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="input-space">
-                                <input formControlName="cvv" type="text" placeholder="CVV2 number">
+                    </div> 
+                    @if(cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(cardNumber.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Card Number is required.
+                                    </div>
+                                }
+                                @if(cardNumber.hasError('pattern')) {
+                                    <div class="alert alert-danger">
+                                        Enter a valid 16 digit Card Number.
+                                    </div>
+                                }
                             </div>
                         </div>
-                        <div class="clearfix"></div>
-
-                        <div class="col-md-2"> <label class="date">Expiration Date</label></div>
+                    }
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="label">
+                                <label>Card Holder Name</label>
+                            </div>
+                        </div>     
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="name" type="text" placeholder="Name on card">
+                            </div>
+                        </div>
+                    </div> 
+                    @if(cardName.invalid && (cardName.dirty || cardName.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(cardName.hasError('required') || cardName.hasError('onlyWhitespace')) {
+                                    <div class="alert alert-danger">
+                                        Card Holder Name is required.
+                                    </div>
+                                }
+                                @if(cardName.hasError('minlength')) {
+                                    <div class="alert alert-danger">
+                                        Name on card must be at least 2 characters long.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="label">
+                                <label>Card Type</label>
+                            </div>
+                        </div>       
                         <div class="col-md-5">
+                            <div class="input-space">
+                                <select formControlName="cardType">
+                                    <option>Visa</option>
+                                    <option>MasterCard</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="label">
+                                <label>CVV</label>
+                            </div>
+                        </div>     
+                        <div class="col-md-3">
+                            <div class="input-space">
+                                <input formControlName="cvv" type="text" placeholder="CVV">
+                            </div>
+                        </div>
+                    </div> 
+                    @if(cvv.invalid && (cvv.dirty || cvv.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(cvv.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        CVV is required.
+                                    </div>
+                                }
+                                @if(billingPin.hasError('pattern')) {
+                                    <div class="alert alert-danger">
+                                        Enter a valid 3 digit CVV.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @if(cardType.invalid && (cardType.dirty || cardType.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(cardType.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Card Type is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="label">
+                                <label>Valid Through</label>
+                            </div>
+                        </div>     
+                        <div class="col-md-3">
                             <div class="input-space">
                                 <select formControlName="expiryMonth">
                                     @for(month of creditCardMonths; track month.code) {
@@ -235,7 +507,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="input-space">
                                 <select (change)="reloadMonths()" formControlName="expiryYear">
                                     @for(year of creditCardYears; track year.code) {
@@ -244,14 +516,36 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> 
+                    @if(expiryMonth.invalid && (expiryMonth.dirty || expiryMonth.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(expiryMonth.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Expiry month is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @if(expiryYear.invalid && (expiryYear.dirty || expiryYear.touched)) {
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if(cardType.hasError('required')) {
+                                    <div class="alert alert-danger">
+                                        Expiry year is required.
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
 
                 <div class="form-area">
                     <h3>Review Your Order</h3>
                     <b>Total Quantity: {{totalQuantity}}</b>
                     <h4>Shipping: FREE</h4>
-                    <B>Total Price: {{totalPrice | currency: "USD"}}</B>
+                    <b>Total Price: {{totalPrice | currency: "USD"}}</b>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-info">Purchase</button>

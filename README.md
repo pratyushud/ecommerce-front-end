@@ -1,59 +1,94 @@
-# AngularEcommerce
+# Angular Ecommerce Front-End
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0.
+This project is an Angular-based front-end for an e-commerce application. It demonstrates best practices in Angular development, including reactive forms, service-based architecture, and integration with RESTful APIs.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Product listing, search, and filtering
+- Product categories
+- Shopping cart management
+- Checkout form with validation
+- Country and state selection with dynamic loading
+- Credit card form with dynamic month/year options
+- Responsive UI
 
-```bash
-ng serve
+## Project Structure
+
+```
+src/
+  app/
+    components/
+      checkout-form/      # Checkout form component
+      search-product/     # Product search component
+    services/
+      product.service.ts  # Product and category data service
+      cart-item.service.ts
+      utility.service.ts
+      checkout.service.ts
+    common/
+      country.ts
+      state.ts
+      ref-code.ts
+      custom-validators.ts
+      ...
+  assets/
+  environments/
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Getting Started
 
-## Code scaffolding
+### Prerequisites
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js (v18+ recommended)
+- npm (v9+ recommended)
+- Angular CLI (`npm install -g @angular/cli@19.0.0`)
 
-```bash
-ng generate component component-name
-```
+### Installation
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Clone the repository:
+   ```
+   git clone <your-repo-url>
+   cd angular-ecommerce
+   ```
 
-```bash
-ng generate --help
-```
+2. Install dependencies:
+   ```
+   npm install
+   ```
 
-## Building
+3. Start the development server:
+   ```
+   ng serve
+   ```
+   The app will be available at `http://localhost:4200/`.
 
-To build the project run:
+### Notes
 
-```bash
-ng build
-```
+- Make sure your backend API is running and accessible for product, category, and checkout endpoints.
+- The project uses [ng-bootstrap](https://ng-bootstrap.github.io/) for UI components.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Key Files
 
-## Running unit tests
+- `src/app/services/product.service.ts`  
+  Handles product and category API calls.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- `src/app/components/checkout-form/checkout-form.component.ts`  
+  Implements the checkout form with reactive validation and dynamic fields.
 
-```bash
-ng test
-```
+- `src/app/components/search-product/search-product.component.html`  
+  Provides product search functionality.
 
-## Running end-to-end tests
+## Customization
 
-For end-to-end (e2e) testing, run:
+- Update API endpoints in the services as needed to match your backend.
+- Modify form validation rules in `custom-validators.ts` or directly in the component.
 
-```bash
-ng e2e
-```
+## Troubleshooting
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- **Dependency errors:** Ensure all `@angular/*` packages are the same version.
+- **Form not updating:** Use `valueChanges` observables for reactive updates.
+- **Checkbox default state:** Remove `checked` attribute for unchecked by default.
 
-## Additional Resources
+## License
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is for educational purposes.

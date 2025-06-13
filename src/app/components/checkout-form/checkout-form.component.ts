@@ -7,6 +7,12 @@ import { RefCode } from '../../common/ref-code';
 import { Country } from '../../common/country';
 import { State } from '../../common/state';
 import { CustomValidators } from '../../common/custom-validators';
+import { CheckoutService } from '../../services/checkout.service';
+import { Address } from '../../common/address';
+import { Customer } from '../../common/customer';
+import { OrderItem } from '../../common/order-item';
+import { Order } from '../../common/order';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-form',
@@ -27,7 +33,9 @@ export class CheckoutFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private cartService: CartItemService,
-              private utilityService: UtilityService
+              private utilityService: UtilityService,
+              private checkoutService: CheckoutService,
+              private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -125,6 +133,41 @@ export class CheckoutFormComponent implements OnInit {
       this.checkoutFormGroup.markAllAsTouched();
       return;
     }
+    let formValues = this.checkoutFormGroup.value;
+    let shippingAddress: Address = new Address(formValues.shippingAddress.street, formValues.shippingAddress.city,
+      formValues.shippingAddress.state, formValues.shippingAddress.country, formValues.shippingAddress.pin);
+    let billingAddress: Address = new Address(formValues.billingAddress.street, formValues.billingAddress.city,
+      formValues.billingAddress.state, formValues.billingAddress.country, formValues.billingAddress.pin);
+    let customer: Customer = new Customer(
+      formValues.customer.firstName,
+      formValues.customer.lastName,
+      formValues.customer.email
+    );
+    let orderItems: OrderItem[] = this.cartService.cartItems.map(item => {
+      return new OrderItem( item.quantity, item.unitPrice, item.id, item.imageUrl)
+    });
+    let order: Order = new Order(this.totalPrice, this.totalQuantity);
+    this.checkoutService.placeOrder(order, customer, shippingAddress, billingAddress, orderItems).subscribe({
+      next: data => {
+        console.log('Order placed successfully', data);
+        alert('Order placed successfully with tracking number: ' + data.orderTrackingNumber);
+        this.resetForm();
+        this.route.navigateByUrl('/products');
+      },
+      error: err => {
+        console.error('Error placing order', err);
+        alert('There was an error placing your order. Please try again later.');
+      }
+    });
+  }
+
+  resetForm(): void {
+    this.checkoutFormGroup.reset();
+    this.cartService.clearCart();
+    this.reloadMonths();
+    this.reloadStates('shippingAddress');
+    this.reloadStates('billingAddress');
+    this.billingAddressSameAsShipping = false;
   }
 
   get firstName() {

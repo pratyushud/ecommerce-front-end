@@ -58,4 +58,9 @@ export class CartItemService {
     this.totalPrice.next(totalPriceValue);
     this.totalQuantity.next(totalQuantityValue);
   }
+
+  clearCart() {
+    this.cartItems = [];
+    this.calculateAndUpdateTotals();
+  }
 }

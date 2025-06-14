@@ -1,9 +1,24 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { OktaAuthModule, OktaConfig } from '@okta/okta-angular';
+import { OktaAuth } from '@okta/okta-auth-js';
+import myAppConfig from './config/my-app-config';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
+
+const oktaConfig = myAppConfig.oidc;
+const oktaAuth = new OktaAuth(oktaConfig);
+const moduleConfig: OktaConfig = { oktaAuth };
+
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(),
+    importProvidersFrom(
+      OktaAuthModule.forRoot(moduleConfig)
+    )
+  ]
 };

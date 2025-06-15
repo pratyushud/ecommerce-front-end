@@ -106,12 +106,15 @@ a,a:hover{
 
 .page-wrapper{
     overflow:hidden;
-    background:#e5e5e5;
-    padding-bottom:8vh
+    background:#fff9f1;
+    padding-bottom:0;
+}
+.page-wrapper ul{
+    margin:0;
 }
 
 .page-container{
-    background:#e5e5e5;
+    background:#fff9f1;
     padding-left:200px
 }
 
@@ -134,7 +137,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-    background:#e4870d;
+    background:#ffaf49;
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -345,7 +348,7 @@ input.au-input.au-input-xl{
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
-    border-right:1px solid #e5e5e5;
+    border-right:1px solid #fff9f1;
     position:relative;
     z-index:3
 }
@@ -574,7 +577,7 @@ input.au-input.au-input-xl{
  */
 
 .form-area{
-    background:#e5e5e5;
+    background:#fff9f1;
     position:relative;
     margin-bottom:45px;
     padding:50px 20px;
@@ -584,11 +587,12 @@ input.au-input.au-input-xl{
     position:absolute;
     top:-26px;
     left:13px;
-    background:#e5e5e5;
+    background:#ffeed8;
     padding:10px 20px;
     font-weight:500;
     z-index:23;
-    display:inline-block
+    display:inline-block;
+    border-radius:10px;
 }
 .input-space{
     margin-bottom:20px
@@ -636,7 +640,7 @@ input.au-input.au-input-xl{
     height:22px;
     width:22px;
     background-color:#fff!important;
-    border:2px solid #e5e5e5;
+    border:2px solid #fff9f1;
     -webkit-border-radius:2px;
     -moz-border-radius:2px;
     border-radius:2px
@@ -854,7 +858,7 @@ footer ul li{
         padding-left:0
     }
      .page-wrapper{
-        background:#e5e5e5;
+        background:#fff9f1;
         padding-bottom:12vh
     }
      .main-content{
@@ -1072,4 +1076,23 @@ footer ul li{
     background-color: #e4460d !important;
     border-color: #e4460d !important;
     color: #fff !important;
+}
+
+.mpagination {
+    margin-bottom: 10px;
+}
+
+.pagination-select {
+    padding: .375rem 1.75rem .375rem .75rem;
+    text-align: justify;
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background: #fff;
+    color: #e4460d;
+}
+
+.pagination-box {
+    display: flex;
+    justify-content: end;
 }

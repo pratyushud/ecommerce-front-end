@@ -26,10 +26,10 @@
                     </div>
                 }
             </div>
-            <div class="container">
+            <div class="container mpagination">
                 <div class="row">
                     <div class="col-8"></div>
-                    <div class="col-2">
+                    <div class="col-3 pagination-box">
                         <div class="footer-pagination">
                             <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
                                 [collectionSize]="theTotalElements" (pageChange)="listProducts()"
@@ -37,8 +37,8 @@
                             </ngb-pagination>
                         </div>
                     </div>
-                    <div class="col-2">
-                        <select #pageSize class="form-select" style="width: 80px; text-align: right" (change)="updatePageSize(pageSize.value)">
+                    <div class="col-1">
+                        <select #pageSize class="form-select" class="pagination-select" (change)="updatePageSize(pageSize.value)">
                             <option value="5">5</option>
                             <option selected="true" value="10">10</option>
                             <option value="20">20</option>

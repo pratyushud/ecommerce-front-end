@@ -134,7 +134,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-    background:#0da8e4;
+    background:#e4870d;
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -217,6 +217,11 @@ section{
     min-width:935px
 }
 
+a {
+    text-decoration: none !important;
+    color: #e4460d !important;
+}
+
 input.au-input.au-input-xl{
     border-radius:40px!important;
     margin-right:15px
@@ -250,11 +255,11 @@ input.au-input.au-input-xl{
 }
 
 .total{
-    background:#205b8d;
+    background:#e4460d;
     line-height:43px;
     color:#fff;
     border-radius:30px;
-    border:1px solid #0da8e4;
+    border:1px solid #e4460d;
     float:left;
     margin-top:7px;
     padding-left:17px
@@ -283,15 +288,15 @@ input.au-input.au-input-xl{
     right:0;
     min-width:95px;
     color:#fff;
-    border:1px solid #205b8d;
+    border:1px solid #e4460d;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:43px;
-    background:#205b8d
+    background:#e4460d
 }
 
 .au-btn-submit:hover{
-    background:#05143f
+    background:#712003;
 }
 
 .au-btn-submit>i{
@@ -536,21 +541,24 @@ input.au-input.au-input-xl{
     outline: 0;
     margin-left: 5px;
 }
-.product-box{
-    margin-bottom:60px
+.product-box {
+    margin-bottom:60px;
 }
-.price{
-    margin:15px 0 0;
+
+.price {
+    margin:0;
     font-weight:800;
-    color:#0da8e4
+    color:#e4460d;
 }
+
 .product-box h1{
     font-size:18px;
-    border-bottom:1px solid #ccc;
     padding-bottom:5px;
     font-weight:600;
     padding-top:12px;
-    margin-bottom:7px
+    margin-bottom:7px;
+    color: #e4460d;
+    height: 60px;
 }
 .product-box h2{
     font-size:15px;
@@ -690,7 +698,7 @@ table.table.table-bordered{
     border:1px solid #dee2e6
 }
 table.table.table-bordered th{
-    BACKGROUND:#0da8e4;
+    background:#e4870d;
     color:#fff;
     font-size:14px;
     padding:7px
@@ -714,11 +722,7 @@ table.table.table-bordered th{
  * ----------------------------
  */
 
- .price{
-    margin:15px 0 0;
-    font-weight:800;
-    color:#0da8e4
-}
+
 .detail-section{
     margin-top:60px
 }
@@ -732,8 +736,8 @@ table.table.table-bordered th{
 
  .btn-info{
     color:#fff;
-    background-color:#0da8e4!important;
-    border-color:#0da8e4!important
+    background-color:#e4460d!important;
+    border-color:#e4460d!important
 }
 a.primary-btn{
     background:#05143f;
@@ -746,7 +750,7 @@ a.primary-btn{
     margin-top:5px
 }
 a.primary-btn:hover{
-    background:#0da8e4;
+    background:#e4460d;
     color:#fff
 }
 
@@ -777,6 +781,12 @@ footer ul li{
     display:inline-block;
     font-size:14px;
     padding:10px 20px
+}
+
+.btn-primary {
+    background: #e4460d !important;
+    border-color: #e4460d !important;
+    color: #fff !important;
 }
 
 /* 
@@ -986,11 +996,11 @@ footer ul li{
         right:10px;
         min-width:85px;
         color:#fff;
-        border:1px solid #205b8d;
+        border:1px solid #e4460d;
         -webkit-border-radius:3px;
         -moz-border-radius:3px;
         border-radius:0;
-        background:#205b8d
+        background:#e4460d
     }
     input.au-input.au-input-xl{
         border-radius:0!important;
@@ -1019,11 +1029,11 @@ footer ul li{
         margin-left:6px
     }
     .total{
-        background:#205b8d;
+        background:#e4460d;
         line-height:30px;
         color:#fff;
         border-radius:30px;
-        border:1px solid #205b8d;
+        border:1px solid #e4460d;
         float:left;
         margin-top:9px;
         padding-left:12px
@@ -1034,4 +1044,32 @@ footer ul li{
         border:0;
         padding:8px 0
     }
+}
+
+.auth-org-logo {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#okta-sign-in .auth-header {
+    padding: 0 !important;
+}
+
+#okta-sign-in .auth-org-logo {
+    max-width: 100px;
+    max-height: 100px !important;
+    margin: 0 auto;
+    display: block;
+}
+
+#okta-sign-in.auth-container .button-primary {
+    background: #e4460d !important;
+    border-color: #e4460d !important;
+    color: #fff !important;
+}
+
+.active > .page-link, .page-link.active {
+    background-color: #e4460d !important;
+    border-color: #e4460d !important;
+    color: #fff !important;
 }

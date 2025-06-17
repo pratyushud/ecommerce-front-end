@@ -14,10 +14,12 @@ import { CartItemService } from '../../services/cart-item.service';
 export class LoginStatusComponent {
   isAuthenticated: boolean = false;
   userName: string = '';
+  storage: Storage = sessionStorage
 
   constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth,
     private oktaAuthStateService: OktaAuthStateService,
-    private cartItemService: CartItemService) { }
+    private cartItemService: CartItemService
+  ) { }
 
   ngOnInit() {
     this.oktaAuthStateService.authState$.subscribe(
@@ -33,6 +35,7 @@ export class LoginStatusComponent {
       this.oktaAuth.getUser().then(
         (user) => {
           this.userName = user.name || '';
+          this.storage.setItem('loggedInUserEmail', user.email || '');
         }
       ).catch(
         (err) => {

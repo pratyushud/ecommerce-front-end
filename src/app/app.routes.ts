@@ -8,9 +8,11 @@ import { LoginComponent } from './components/login/login.component';
 import { MembersComponent } from './components/members/members.component';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { Injector } from '@angular/core';
+import { OrderHisotryComponent } from './components/order-hisotry/order-hisotry.component';
 
 
 export const routes: Routes = [
+    {path: 'orders', component: OrderHisotryComponent, canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoginPage }},
     {path: 'members', component: MembersComponent, canActivate: [OktaAuthGuard], data: { onAuthRequired: sendToLoginPage }},
     {path: 'login/callback', component: OktaCallbackComponent},
     {path: 'login', component: LoginComponent},

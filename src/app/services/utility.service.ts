@@ -6,12 +6,14 @@ import { Country } from '../common/country';
 import { CountryResponse } from '../interfaces/country-response';
 import { StateResponse } from '../interfaces/state-response';
 import { State } from '../common/state';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
-  url: string = 'http://localhost:8080/api';
+  ecommerce_be_url: string = environment.ecommerce_be_url;
+  url: string = this.ecommerce_be_url;
   months: RefCode[] = [
     { description: 'Jan', code: 1 },
     { description: 'Feb', code: 2 },

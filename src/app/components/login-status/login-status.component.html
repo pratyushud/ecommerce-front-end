@@ -1,7 +1,7 @@
-<div class="login-status-header">
+<div class="form-header login-status-header">
     @if(isAuthenticated && userName) {        
         <div class="login-status-user-info">
-            Welcome back {{userName}}!
+            Welcome back <b>{{userName}}!</b>
         </div>
     }
     @if(!isAuthenticated) {
@@ -11,6 +11,7 @@
         <button (click)="logout()" class="security-btn">Logout</button>
     }
     @if(isAuthenticated) {
-        <button routerLink="/members" class="security-btn">Members Area</button>
+        <button routerLink="/members" class="security-btn">Members</button>
+        <button routerLink="/orders" class="security-btn">Orders</button>
     }
 </div>

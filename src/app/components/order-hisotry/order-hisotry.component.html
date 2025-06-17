@@ -1,0 +1,55 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <h4>Order History</h4>
+        <hr>
+        <div class="container-fluid">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Order Tracking</th>
+                        <th>Total Price</th>
+                        <th>Total Quantity</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(order of customerOrders; track order.id) {
+                        <tr>
+                            <td>{{ order.orderTrackingNumber }}</td>
+                            <td class="right-align">{{ order.totalPrice | currency: "USD" }}</td>
+                            <td class="right-align">{{ order.totalQuantity }}</td>
+                            <td>{{ order.dateCreated | date:'dd-MM-yyyy, hh:mm:ss a' }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @if(customerOrders.length == 0) {
+                <div class="alert alert-warning">
+                    No orders found!
+                </div>
+            }
+            <div class="container mpagination">
+                <div class="row">
+                    <div class="col-8"></div>
+                    <div class="col-3 pagination-box">
+                        <div class="footer-pagination">
+                            <ngb-pagination [(page)]="thePageNumber" [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements" (pageChange)="getOrderHistory()"
+                                [maxSize]="pageMaxSize">
+                            </ngb-pagination>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <select #pageSize class="form-select" class="pagination-select" (change)="updatePageSize(pageSize.value)">
+                            <option value="5">5</option>
+                            <option selected="true" value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+    </div>
+</div>

@@ -5,7 +5,8 @@ import { OktaAuth } from '@okta/okta-auth-js';
 import myAppConfig from './config/my-app-config';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptorFn } from './services/auth-interceptor.service';
 
 
 const oktaConfig = myAppConfig.oidc;
@@ -16,7 +17,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([authInterceptorFn])
+    ),
     importProvidersFrom(
       OktaAuthModule.forRoot(moduleConfig)
     )
